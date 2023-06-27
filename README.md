@@ -1,6 +1,6 @@
 # README
 
-##アプリ名
+## アプリ名
 Football days
 
 ## サイト概要
