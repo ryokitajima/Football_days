@@ -1,23 +1,29 @@
-# README
-
-## アプリ名
-Football days
+## Football days
 
 ## サイト概要
 ### サイトテーマ
-<サッカー好きのためのコミュニティサイト>
+サッカー好きのためのコミュニティサイト
 
 ### テーマを選んだ理由
-<国内・海外サッカーが好きで、毎週観戦が趣味になっています。推しクラブの試合スケジュールを把握したり、個人の感想をブログ感覚で共有できるサイトが欲しいと思いテーマに選びました。>
+国内・海外サッカーが好きで、毎週観戦が趣味になっています。
+リモートワークや友人の転勤等で身近なサッカー好きと直接会って話せる機会も減り、お互いの好きなチームによっては試合時間が大幅に異なるため、
+いつでも情報が発信できサッカー好きの繋がりの輪を広げるられるサイトが欲しいと思いテーマとしました。
 
 ### ターゲットユーザ
-<サッカーが好きな人>
+- サッカー好き
+- 観戦後の意見を語り合いたい方
+- 友人以外のコミュニティでサッカー好きと繋がりたい方
+- サッカーの情報を集めたい方
 
 ### 主な利用シーン
-<推しチームのスケジュール把握・感想投稿・他のユーザーの感想閲覧>
+- 試合観戦後の感想を発信したい時
+- 他の人の意見を確認したい時
+- 試合情報や移籍情報など情報を集めたい時
+- サッカーにおいて自分と価値観が合うユーザーを見つけたい時
+- サッカー好き仲間を見つけたい時
 
 ## 設計書
-<...>
+
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -27,29 +33,4 @@ Football days
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- 使用検討中です
