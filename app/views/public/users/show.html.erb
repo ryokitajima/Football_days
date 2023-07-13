@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="card col-md-3 text-center" style="width: 18rem;">
+   <% if current_user && current_user.image.attached? %>
+    <%= image_tag current_user.get_image(200, 200)  %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+  <div class="card-body">
+    <% if current_user %>
+    <h5 class="card-title"><%= current_user.name %></h5>
+    <% end %>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">フォロー</li>
+    <li class="list-group-item">フォロワー</li>
+  </ul>
+  <div class="card-body">
+    <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
+  </div>
+</div>
+ <div class="card col-md-8">
+  <% @articles.each do |article| %>
+  <div class="card-header">
+    <table>
+      <tr>
+        <td><%= image_tag current_user.get_image(50, 50) %></td>
+        <td><%= current_user.name %></td>
+        <td><%= article.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+    </table>
+   
+  </div>
+  <div class="card-body col">
+    <blockquote class="blockquote mb-0">
+      <p><%= article.title %></p>
+    </blockquote>
+  </div>
+  <% end %>
+</div>
+
+
+
+
+

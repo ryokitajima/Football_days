@@ -38,6 +38,10 @@
 
 
 ##メモ
+会員情報編集ページのパスワードを表示したい（質問する！）
+
+
+
 public/shared/_link.html.erb削除文
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
