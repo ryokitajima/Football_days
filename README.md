@@ -19,8 +19,9 @@
 - 試合観戦後の感想を発信したい時
 - 他の人の意見を確認したい時
 - 試合情報や移籍情報など情報を集めたい時
-- サッカーにおいて自分と価値観が合うユーザーを見つけたい時
+- サッカーにおいて自分と価値観が合うユーザを見つけたい時
 - サッカー好き仲間を見つけたい時
+- ただしユーザの画像は投稿可能にし、試合の画像や映像は投稿機能として準備しない
 
 ## 設計書
 
@@ -34,3 +35,24 @@
 
 ## 使用素材
 - 使用検討中です
+
+
+##メモ
+public/shared/_link.html.erb削除文
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+<% end %>
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+<% end %>
+
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+<% end %>
+
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
+  <% end %>
+<% end %>
