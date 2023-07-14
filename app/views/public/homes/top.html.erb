@@ -1,1 +1,29 @@
-<h1>Top</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h4 class="text-center">Football daysへようこそ！！</h4>
+    <p class="text-center">ログインをすると記事の投稿・コメントができます！</p>
+<div class="card col">
+  <p class="text-center">最近の投稿</p>
+  <% @articles.each do |article| %>
+  <div class="card-header">
+  <table>
+    <tr>
+      <td><%= image_tag article.user.get_image(50, 50) %></td>
+      <td><%= article.user.name %></td>
+      <td><%= article.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+  </table>
+  </div>
+  <div class="card-body col">
+    <blockquote class="blockquote mb-0">
+      <p><%= link_to article.title, article_path(article.id) %></p>
+    </blockquote>
+  </div>
+  <%= paginate @articles %>
+  <% end %>
+</div>
+</div>
+</div>
+</div>
+

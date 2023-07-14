@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get "/about" => "public/homes#about"
   
   scope module: :public do
+    get "/users/unsubscribe" => "users#unsubscribe"
+    patch "/users/withdrawal" => "users#withdrawal"
     resources :articles
     resources :users
   end

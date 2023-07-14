@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])  
-    @articles = current_user.articles
+    @articles = @user.articles
   end
   
   def edit
@@ -12,6 +12,16 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(current_user)
+  end
+  
+  def unsubscribe
+  end
+  
+  def withdrawal
+    @user = current_uder
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private

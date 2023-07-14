@@ -15,7 +15,7 @@
   </div>
   <div class="card-body col">
     <blockquote class="blockquote mb-0">
-      <p><%= article.title %></p>
+      <p><%= link_to article.title, article_path(article.id) %></p>
     </blockquote>
   </div>
   <%= paginate @articles %>
