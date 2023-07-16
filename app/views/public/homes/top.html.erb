@@ -12,6 +12,7 @@
       <td><%= image_tag article.user.get_image(50, 50) %></td>
       <td><%= article.user.name %></td>
       <td><%= article.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= render 'public/favorites/btn', article: article %></td>
     </tr>
   </table>
   </div>

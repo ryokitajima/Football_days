@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   scope module: :public do
     get "/users/unsubscribe" => "users#unsubscribe"
     patch "/users/withdrawal" => "users#withdrawal"
-    resources :articles
+    resources :articles do
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :users
   end
   
