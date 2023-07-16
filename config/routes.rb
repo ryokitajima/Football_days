@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get "/users/unsubscribe" => "users#unsubscribe"
     patch "/users/withdrawal" => "users#withdrawal"
     resources :articles do
+      resources :article_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
     resources :users

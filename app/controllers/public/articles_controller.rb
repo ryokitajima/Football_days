@@ -17,6 +17,7 @@ class Public::ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @user = @article.user
+    @article_comment = ArticleComment.new
   end
   
   def edit

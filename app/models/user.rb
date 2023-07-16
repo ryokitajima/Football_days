@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :image
   has_many :articles, dependent: :destroy
+  has_many :article_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   def get_image(width, height)
