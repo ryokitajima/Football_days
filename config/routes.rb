@@ -25,14 +25,13 @@ Rails.application.routes.draw do
       resources :article_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
+    resources :favorites, only: [:index]
     resources :users do
       resource :relationships, only: [:create, :destroy]
       get '/followings' => 'relationships#followings', as: 'followings'
       get '/followers' => 'relationships#followers', as: 'followers'
     end
   end
-  
-  
   
 end
 

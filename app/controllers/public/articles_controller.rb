@@ -11,7 +11,7 @@ class Public::ArticlesController < ApplicationController
   end
   
   def index
-    @articles = Article.page(params[:page]).per(10)
+    @articles = Article.order(created_at: :desc).page(params[:page]).per(10)
   end
   
   def show

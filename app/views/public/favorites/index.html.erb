@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h4 class="text-cnter">お気に入り記事一覧</h4>
+<div class="card col">
+   <% if @favorite_articles.empty? %>
+    <p>お気に入りした記事はありません。</p>
+  <% else %>
+  <% @favorite_articles.each do |favorite_article| %>
+  <div class="card-header">
+  <table>
+    <tr>
+      <td><%= image_tag favorite_article.user.get_image(50, 50) %></td>
+      <td><%= link_to favorite_article.user.name,user_path(favorite_article.user.id) %></td>
+      <td><%= favorite_article.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= render 'public/favorites/btn', article: favorite_article %></td>
+      <td>コメント数: <%= favorite_article.article_comments.count %></td>
+    </tr>
+  </table>
+  </div>
+  <div class="card-body col">
+    <blockquote class="blockquote mb-0">
+      <p><%= link_to favorite_article.title, article_path(favorite_article.id) %></p>
+    </blockquote>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+</div>
+</div>
+</div>
+
