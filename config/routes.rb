@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   get "/about" => "public/homes#about"
   get "/admin" => "admin/homes#top"
   
+  
   scope module: :public do
+    get '/search', to: 'searches#search'
     get "/users/unsubscribe" => "users#unsubscribe"
     patch "/users/withdrawal" => "users#withdrawal"
     resources :articles do

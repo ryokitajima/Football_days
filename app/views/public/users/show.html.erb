@@ -14,7 +14,7 @@
     <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
   </ul>
     <div class="card-body">
-       <% if @user.id == current_user.id %>
+       <% if user_signed_in? && @user.id == current_user.id %>
         <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
        <% else %>
         <td><%= render "public/relationships/btn", user: @user %></td>
@@ -28,9 +28,10 @@
     <table>
       <tr>
         <td><%= image_tag @user.get_image(50, 50) %></td>
-        <td><%= @user.name %></td>
+        <td><%= link_to @user.name,user_path(@user.id) %></td>
         <td><%= article.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= render 'public/favorites/btn', article: article %></td>
+        <td>コメント数: <%= article.article_comments.count %></td>
       </tr>
     </table>
   </div>
