@@ -1,27 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class="card col-md-3 text-center" style="width: 18rem;">
-   <% if @user && @user.image.attached? %>
-    <%= image_tag @user.get_image(200, 200)  %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-  <div class="card-body">
-    <h5 class="card-title"><%= @user.name %></h5>
-  </div>
+    <div class="col-md-3 text-center">
+       <% if @user.image.attached? %>
+        <%= image_tag @user.get_image(200, 200)  %>
+       <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+       <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to @user.name, user_path(@user.id) %></h5>
+      </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">フォロー</li>
-    <li class="list-group-item">フォロワー</li>
+    <li class="list-group-item">フォロー<%= link_to @user.followings.count, user_followings_path(@user) %></li>
+    <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
   </ul>
-  <div class="card-body">
-    <% if @user.id == current_user.id %>
-    <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
-    <% else %>
-     <%= link_to "フォロー",  class: "btn btn-light" %>
-    <% end %>
-  </div>
-</div>
- <div class="card col-md-8">
+    <div class="card-body">
+       <% if @user.id == current_user.id %>
+        <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
+       <% else %>
+        <td><%= render "public/relationships/btn", user: @user %></td>
+       <% end %>
+    </div>
+    </div>
+  <div class="col">
+ <div class="card-body">
   <% @articles.each do |article| %>
   <div class="card-header">
     <table>
@@ -32,7 +33,6 @@
         <td><%= render 'public/favorites/btn', article: article %></td>
       </tr>
     </table>
-   
   </div>
   <div class="card-body col">
     <blockquote class="blockquote mb-0">
@@ -40,6 +40,7 @@
     </blockquote>
   </div>
   <% end %>
+</div>
 </div>
 
 

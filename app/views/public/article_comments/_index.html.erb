@@ -1,0 +1,20 @@
+<table class="table table-hover">
+  <tbody>
+      <% article.article_comments.each do |article_comment| %>
+      <tr>
+        <td>
+          <%= link_to user_path(article_comment.user) do %>
+            <%= image_tag article_comment.user.get_image(50,50) %><br>
+            <%= article_comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= article_comment.comment %></td>
+        <td>
+          <% if article_comment.user == current_user %>
+            <%= link_to "Destroy", article_article_comment_path(article, article_comment), method: :delete, class: "btn btn-danger" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

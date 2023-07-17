@@ -1,4 +1,6 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user! # ログインしているユーザーのみアクセス可能にする
+  
   def create
     @article = Article.find(params[:article_id])
     @favorite = Favorite.new(user_id: current_user.id, article_id: params[:article_id])

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 text-center">
        <% if @user.image.attached? %>
         <%= image_tag @user.get_image(200, 200)  %>
        <% else %>
@@ -10,18 +10,22 @@
         <h5 class="card-title"><%= link_to @user.name, user_path(@user.id) %></h5>
       </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">フォロー</li>
-    <li class="list-group-item">フォロワー</li>
+    <li class="list-group-item">フォロー<%= link_to @user.followings.count, user_followings_path(@user) %></li>
+    <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
   </ul>
     <div class="card-body">
-      <%= link_to "フォロー", class: "btn btn-light" %>
+       <% if @user.id == current_user.id %>
+        <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
+       <% else %>
+        <td><%= render "public/relationships/btn", user: @user %></td>
+       <% end %>
     </div>
     </div>
     <div class="col">
       <div class="card-body text-center">
         <h4 class="card-title"> <%= @article.title %></h4>
         <% if @article.user == current_user %>
-        <%= link_to "記事を編集する", edit_article_path(@article.id),class: "btn btn-success" %> 
+        <%= link_to "記事を編集する", edit_article_path(@article.id),class: "btn btn-success" %>
         <% end %>
       </div>
   <ul class="list-group list-group-flush">
@@ -40,6 +44,7 @@
     </table>
   </div>
   <div>
+    <%= render "public/article_comments/index", article: @article %>
     <%= render "public/article_comments/form", article: @article, article_comment: @article_comment %>
   </div>
     </div>
