@@ -9,4 +9,5 @@ class Public::SearchesController < ApplicationController
 			@records = Article.search_for(@content, @method)
 		end
 	end
+
 end

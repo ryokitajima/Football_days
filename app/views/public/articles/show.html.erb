@@ -33,7 +33,7 @@
   </ul>
   <div class="card">
   <div class="card-body">
-    <%= @article.body %>
+    <%=safe_join(@article.body.split("\n"),tag(:br))%>
   </div>
   </div>
   <div>
