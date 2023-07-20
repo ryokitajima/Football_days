@@ -6,8 +6,14 @@
        <% else %>
         <%= image_tag 'no_image', size: "200x200" %>
        <% end %>
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to @user.name, admin_user_path(@user.id) %></h5>
+      <div class="card-body text-center">
+         <h5 class="card-title"><%= link_to @user.name, admin_user_path(@user.id) %></h5>
+         <h6 class="card-title"><%=safe_join(@user.email.split("\n"),tag(:br))%></h6>
+          <% if @user.is_deleted == false %>
+            <h6>ステータス：有効</h6>
+          <% else %>
+            <h6>ステータス：退会</h6>
+          <% end %>
       </div>
     <div class="card-body">
         <%= link_to "プロフィールを編集する", edit_admin_user_path(@user.id), class: "btn btn-light" %>
@@ -19,7 +25,7 @@
         <%= link_to "削除", admin_article_path(@article.id), method: :delete, class: "btn btn-danger" %>
       </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= image_tag @user.get_image(50, 50) %> <%= link_to @user.name,admin_user_path(@user.id) %> <%= @article.created_at.strftime('%Y/%m/%d') %></li>
+    <li class="list-group-item"><%= image_tag @user.get_image(50, 50) %> <%= link_to @user.name,admin_user_path(@user.id) %> <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></li>
   </ul>
   <div class="card">
   <div class="card-body">
@@ -29,6 +35,7 @@
   <div>
     <table>
       <tr>
+        <td>お気に入り数:<%= @article.favorites.count %></td>
         <td>コメント数: <%= @article.article_comments.count %></td>
       </tr>
     </table>

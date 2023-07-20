@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card col">
+          <% if @model == 'user' %>
+          	<h3>Users検索 "<%= @content %>"</h3>
+            <%= render 'admin/users/index', users: @records %>
+          <% elsif @model == 'article' %>
+          	<h3>投稿記事検索 "<%= @content %>"</h3>
+            <%= render 'admin/articles/index', articles: @records %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

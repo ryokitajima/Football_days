@@ -1,0 +1,22 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th>フォロー数</th>
+      <th>フォロワー数</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= image_tag user.get_image(50,50) %></td>
+        <td><%= link_to user.name, admin_user_path(user.id) %></td>
+        <td><%= link_to user.followings.count, admin_user_followings_path(user.id) %></td>
+        <td><%= link_to user.followers.count, admin_user_followers_path(user.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

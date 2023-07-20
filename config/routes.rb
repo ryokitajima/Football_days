@@ -34,10 +34,14 @@ Rails.application.routes.draw do
   end
   
    namespace :admin do
+     get '/search', to: 'searches#search'
      resources :articles, only: [:index, :show, :edit, :update, :destroy ] do
        resources :article_comments, only: [:destroy]
      end
-     resources :users
+     resources :users do
+      get '/followings' => 'relationships#followings', as: 'followings'
+      get '/followers' => 'relationships#followers', as: 'followers'
+    end
   end
 end
 

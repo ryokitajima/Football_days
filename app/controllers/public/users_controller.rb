@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  
+  before_action :is_matching_login_user, only: [:edit, :update, :unsubscribe, :withdrawal]
   def show
     @user = User.find(params[:id])  
     @articles = @user.articles.order(created_at: :desc).page(params[:page]).per(10)
@@ -28,5 +28,11 @@ class Public::UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :image)
+  end
+  def is_matching_login_user
+    @user = User.find(params[:id])
+    unless user_signed_in? && current_user.id == params[:id].to_i
+      redirect_to root_path
+    end
   end
 end

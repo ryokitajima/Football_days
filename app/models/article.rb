@@ -8,14 +8,6 @@ class Article < ApplicationRecord
   end
   
   def self.search_for(content, method)
-    if method == 'perfect'
-      Article.where(title: content)
-    elsif method == 'forward'
-      Article.where('title LIKE ?', content+'%')
-    elsif method == 'backward'
-      Article.where('title LIKE ?', '%'+content)
-    else
       Article.where('title LIKE ?', '%'+content+'%')
-    end
   end
 end

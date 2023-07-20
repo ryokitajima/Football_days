@@ -22,4 +22,5 @@ class Public::RelationshipsController < ApplicationController
 		@users = @user.followers
   end
 end
+
   

@@ -1,4 +1,5 @@
 class Public::ArticlesController < ApplicationController
+before_action :is_matching_login_article, only: [:edit, :update, :destroy, :create]
   def new
     @article = Article.new
   end
@@ -40,5 +41,10 @@ class Public::ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :body)
   end
-  
+  def is_matching_login_article
+    @article = Article.find(params[:id])
+    unless @article.user == current_user
+      redirect_to articles_path
+    end
+  end
 end

@@ -12,7 +12,7 @@
     <tr>
       <td><%= image_tag favorite_article.user.get_image(50, 50) %></td>
       <td><%= link_to favorite_article.user.name,user_path(favorite_article.user.id) %></td>
-      <td><%= favorite_article.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= favorite_article.created_at.strftime('%Y/%m/%d %H:%M') %></td>
       <td><%= render 'public/favorites/btn', article: favorite_article %></td>
       <td>コメント数: <%= favorite_article.article_comments.count %></td>
     </tr>
