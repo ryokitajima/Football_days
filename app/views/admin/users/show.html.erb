@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 text-center">
+       <% if @user.image.attached? %>
+        <%= image_tag @user.get_image(200, 200)  %>
+       <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+       <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to @user.name, admin_user_path(@user.id) %></h5>
+      </div>
+  <ul class="list-group list-group-flush">
+  </ul>
+    <div class="card-body">
+        <%= link_to "プロフィールを編集する", edit_admin_user_path(@user.id), class: "btn btn-light" %>
+    </div>
+    </div>
+  <div class="col">
+ <div class="card-body">
+  <% @articles.each do |article| %>
+  <div class="card-header">
+    <table>
+      <tr>
+        <td><%= image_tag @user.get_image(50, 50) %></td>
+        <td><%= link_to @user.name,admin_user_path(@user.id) %></td>
+        <td><%= article.created_at.strftime('%Y/%m/%d') %></td>
+        <td>お気に入り数：<%= article.favorites.count %></td>
+        <td>コメント数: <%= article.article_comments.count %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="card-body col">
+    <blockquote class="blockquote mb-0">
+      <p><%= link_to article.title, admin_article_path(article.id) %></p>
+    </blockquote>
+  </div>
+  <%= paginate @articles %>
+  <% end %>
+</div>
+</div>
+
+
+
+
+
