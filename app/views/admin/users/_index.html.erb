@@ -11,7 +11,13 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= image_tag user.get_image(50,50) %></td>
+        <td>
+          <% if user.image.attached? %>
+            <%= image_tag user.get_image(50, 50) %>
+          <% else %>
+            <%= image_tag 'no_image', size: '50x50' %>
+          <% end %>
+        </td>
         <td><%= link_to user.name, admin_user_path(user.id) %></td>
         <td><%= link_to user.followings.count, admin_user_followings_path(user.id) %></td>
         <td><%= link_to user.followers.count, admin_user_followers_path(user.id) %></td>

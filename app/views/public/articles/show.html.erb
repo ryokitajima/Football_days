@@ -21,7 +21,8 @@
        <% end %>
     </div>
     </div>
-    <div class="col">
+    <div class="row">
+    <div class="col-md-9">
       <div class="card-body text-center">
         <h4 class="card-title"> <%= @article.title %></h4>
         <% if @article.user == current_user %>
@@ -44,7 +45,7 @@
       </tr>
     </table>
   </div>
-  <div>
+  <div class="col">
     <%= render "public/article_comments/index", article: @article %>
     <% if user_signed_in? %>
     <%= render "public/article_comments/form", article: @article, article_comment: @article_comment %>
