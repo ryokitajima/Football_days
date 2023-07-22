@@ -1,6 +1,14 @@
-<h2>Follower Users</h2>
-<% if @users.exists? %>
-  <%= render 'public/users/index', users: @users %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card col">
+        <h2 class="text-center">Follower Users</h2>
+        <% if @users.exists? %>
+          <%= render 'public/users/index', users: @users %>
+        <% else %>
+          <p>ユーザーはいません</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

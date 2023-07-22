@@ -11,8 +11,11 @@ class Public::UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(current_user)
+    if @user.update(user_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit, notice: '名前もしくはメールアドレスが既に使用されています'
+    end
   end
   
   def unsubscribe

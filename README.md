@@ -39,9 +39,8 @@
 
 ##メモ
 会員情報編集ページにパスワードを表示したい・編集できるようにしたい
-navbarが正常に動かない
-ナビゲーションバーのレイアウト修正
-コメントの文字数に関わらず、プロフィールの横に配置
+コメントの文字数に関わらず、プロフィールの横に配置(admin側修正)
+バリデーションで編集ができなかった場合、エラーメッセージを表示
 
 
 public/shared/_link.html.erb削除文
@@ -62,3 +61,4 @@ public/shared/_link.html.erb削除文
     <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
   <% end %>
 <% end %>
+

@@ -7,31 +7,30 @@
         <%= image_tag 'no_image', size: "200x200" %>
        <% end %>
       <div class="card-body">
-        <h5 class="card-title"><%= link_to @user.name, user_path(@user.id) %></h5>
+        <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, user_path(@user.id) %></h5>
       </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">フォロー<%= link_to @user.followings.count, user_followings_path(@user) %></li>
-    <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
-  </ul>
-    <div class="card-body">
-       <% if user_signed_in? && @user.id == current_user.id %>
-        <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
-       <% else %>
-        <td><%= render "public/relationships/btn", user: @user %></td>
-       <% end %>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">フォロー<%= link_to @user.followings.count, user_followings_path(@user) %></li>
+        <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
+      </ul>
+      <div class="card-body">
+         <% if user_signed_in? && @user.id == current_user.id %>
+          <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
+         <% else %>
+          <td><%= render "public/relationships/btn", user: @user %></td>
+         <% end %>
+      </div>
     </div>
-    </div>
-    <div class="row">
     <div class="col-md-9">
       <div class="card-body text-center">
-        <h4 class="card-title"> <%= @article.title %></h4>
+        <h4 class="card-title" style="word-wrap: break-word;"><%=safe_join(@article.title.split("\n"),tag(:br))%></h4>
         <% if @article.user == current_user %>
         <%= link_to "記事を編集する", edit_article_path(@article.id),class: "btn btn-success" %>
         <% end %>
       </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= image_tag @user.get_image(50, 50) %> <%= link_to @user.name,user_path(@user.id) %> <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></li>
-  </ul>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= image_tag @user.get_image(50, 50) %> <%= link_to @user.name,user_path(@user.id) %> <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+      </ul>
   <div class="card">
   <div class="card-body">
     <%=safe_join(@article.body.split("\n"),tag(:br))%>
@@ -45,11 +44,11 @@
       </tr>
     </table>
   </div>
-  <div class="col">
-    <%= render "public/article_comments/index", article: @article %>
     <% if user_signed_in? %>
     <%= render "public/article_comments/form", article: @article, article_comment: @article_comment %>
     <% end %>
+    <%= render "public/article_comments/index", article: @article %>
+    
   </div>
     </div>
     </div>

@@ -7,7 +7,7 @@
         <%= image_tag 'no_image', size: "200x200" %>
        <% end %>
       <div class="card-body">
-        <h5 class="card-title"><%= link_to @user.name, user_path(@user.id) %></h5>
+        <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, user_path(@user.id) %></h5>
       </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">フォロー<%= link_to @user.followings.count, user_followings_path(@user) %></li>
@@ -21,7 +21,7 @@
        <% end %>
     </div>
     </div>
-  <div class="col">
+  <div class="col-md-9">
  <div class="card-body">
   <% @articles.each do |article| %>
   <div class="card-header">
@@ -35,7 +35,7 @@
       </tr>
     </table>
   </div>
-  <div class="card-body col">
+  <div class="card-body" style="word-wrap: break-word;">
     <blockquote class="blockquote mb-0">
       <p><%= link_to article.title, article_path(article.id) %></p>
     </blockquote>

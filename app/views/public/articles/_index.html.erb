@@ -1,4 +1,4 @@
-<table class='table table-hover table-inverse'>
+<table class='table table-hover table-inverse'style="table-layout: fixed;">
   <thead>
     <tr>
       <th>user</th>
@@ -13,7 +13,7 @@
           <% end %>
           <%= link_to article.user.name, user_path(article.user.id) %>
         </td>
-        <td><%= link_to article.title,article, class: "article_#{article.id}" %></td>
+        <td style="word-wrap: break-word;"><%= link_to article.title,article, class: "article_#{article.id}" %></td>
         <td><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></td>
       </tr>
     <% end %>

@@ -1,5 +1,5 @@
 class Public::ArticlesController < ApplicationController
-before_action :is_matching_login_article, only: [:edit, :update, :destroy, :create]
+before_action :is_matching_login_article, only: [:edit, :update, :destroy]
   def new
     @article = Article.new
   end
@@ -7,8 +7,11 @@ before_action :is_matching_login_article, only: [:edit, :update, :destroy, :crea
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    @article.save
-    redirect_to articles_path
+    if @article.save
+      redirect_to article_path(@article)
+    else
+      render :new
+    end
   end
   
   def index
