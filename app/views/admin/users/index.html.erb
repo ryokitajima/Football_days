@@ -1,35 +1,33 @@
 <div class="container">
   <div class="row">
     <div class="col">
-    
-<div class="card col">
-  <h4 class="text-center">ユーザ一覧</h4>
-    <table class="table">
-      <% @users.each do |user| %>
-      <thead>
-        <th class="active col-xs-4">ユーザID</th>
-        <th class="active col-xs-4">ユーザ名</th>
-        <th class="active col-xs-4">メールアドレス</th>
-        <th class="active col-xs-4">ステータス</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= link_to user.name, admin_user_path(user.id) %></td>
-        <td><%= user.email %></td>
-          <% if user.is_deleted == false %>
-            <td>有効</td>
-          <% else %>
-            <td>退会</td>
-          <% end %>
-      </tr>
-    </tbody>
-     <% end %>
-  </table>
+      <div class="card col">
+        <h4 class="text-center">ユーザ一覧</h4>
+          <table class="table" style="table-layout: fixed;">
+            <% @users.each do |user| %>
+            <thead>
+              <th class="active col-xs-4">ユーザID</th>
+              <th class="active col-xs-4">ユーザ名</th>
+              <th class="active col-xs-4">メールアドレス</th>
+              <th class="active col-xs-4">ステータス</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= user.id %></td>
+                <td style="word-wrap: break-word;"><%= link_to user.name, admin_user_path(user.id) %></td>
+                <td style="word-wrap: break-word;"><%= user.email %></td>
+                  <% if user.is_deleted == false %>
+                    <td>有効</td>
+                  <% else %>
+                    <td>退会</td>
+                  <% end %>
+              </tr>
+            </tbody>
+             <% end %>
+          </table>
+        </div>
+        <%= paginate @users %>
+      </div>
+    </div>
   </div>
-  
-  </div>
-  <%= paginate @users %>
-  </div>
-  </div>
-  </div>
+</div>

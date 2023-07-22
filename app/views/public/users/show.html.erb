@@ -25,10 +25,11 @@
  <div class="card-body">
   <% @articles.each do |article| %>
   <div class="card-header">
-    <table>
+    <table class="table" style="table-layout: fixed;">
       <tr>
-        <td><%= image_tag @user.get_image(50, 50) %></td>
-        <td><%= link_to @user.name,user_path(@user.id) %></td>
+        <td style="word-wrap: break-word;">
+          <%= image_tag @user.get_image(50, 50) %></br>
+          <%= link_to @user.name,user_path(@user.id) %></td>
         <td><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td><%= render 'public/favorites/btn', article: article %></td>
         <td>コメント数: <%= article.article_comments.count %></td>
@@ -40,9 +41,9 @@
       <p><%= link_to article.title, article_path(article.id) %></p>
     </blockquote>
   </div>
-  <%= paginate @articles %>
   <% end %>
 </div>
+<%= paginate @articles %>
 </div>
 
 

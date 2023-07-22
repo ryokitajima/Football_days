@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="col-md-9">
-      <div class="card-body text-center">
+      <div class="card-body text-center" style="word-wrap: break-word;">
         <h4 class="card-title" style="word-wrap: break-word;"><%=safe_join(@article.title.split("\n"),tag(:br))%></h4>
         <% if @article.user == current_user %>
         <%= link_to "記事を編集する", edit_article_path(@article.id),class: "btn btn-success" %>

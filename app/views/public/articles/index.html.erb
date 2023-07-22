@@ -5,24 +5,26 @@
   <h4 class="text-center">投稿一覧</h4>
   <% @articles.each do |article| %>
   <div class="card-header">
-  <table>
+  <table class="table" style="table-layout: fixed;">
     <tr>
-      <td><%= image_tag article.user.get_image(50, 50) %></td>
-      <td><%= link_to article.user.name,user_path(article.user.id) %></td>
+      <td style="word-wrap: break-word;">
+        <%= image_tag article.user.get_image(50, 50) %></br>
+        <%= link_to article.user.name,user_path(article.user.id) %>
+      </td>
       <td><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></td>
       <td><%= render 'public/favorites/btn', article: article %></td>
       <td>コメント数: <%= article.article_comments.count %></td>
     </tr>
   </table>
   </div>
-  <div class="card-body col">
+  <div class="card-body col" style="word-wrap: break-word;">
     <blockquote class="blockquote mb-0">
       <p><%= link_to article.title, article_path(article.id) %></p>
     </blockquote>
   </div>
-  <%= paginate @articles %>
   <% end %>
 </div>
+<%= paginate @articles %>
 </div>
 </div>
 </div>
