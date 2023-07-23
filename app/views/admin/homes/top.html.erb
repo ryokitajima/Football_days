@@ -10,7 +10,7 @@
              <div class="media-body">
                 <%= link_to article.user.name, admin_user_path(article.user.id) %>
                 <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
-                <p class="mb-0 text-break"><%= link_to article.title, article_path(article.id) %></p>
+                <p class="mb-0 text-break"><%= link_to article.title, admin_article_path(article.id) %></p>
                 お気に入り数：<%= article.favorites.count %>
                 コメント数: <%= article.article_comments.count %>
              </div>
