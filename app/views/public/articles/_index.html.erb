@@ -9,7 +9,7 @@
     <% articles.each do |article| %>
       <tr>
         <td><%= link_to(article.user) do %>
-          <%= image_tag article.user.get_image(50,50) %>
+          <%= image_tag article.user.get_image(50,50), class: "bd-placeholder-img mr-3 rounded-circle", width: "50", height: "50" %>
           <% end %>
           <%= link_to article.user.name, user_path(article.user.id) %>
         </td>

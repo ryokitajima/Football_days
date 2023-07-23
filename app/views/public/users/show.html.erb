@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-md-3 text-center">
        <% if @user.image.attached? %>
-        <%= image_tag @user.get_image(200, 200)  %>
+        <%= image_tag @user.get_image(200, 200), class: "bd-placeholder-img mr-3 rounded-circle", width: "200", height: "200" %>
        <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
+        <%= image_tag 'no_image',size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
        <% end %>
       <div class="card-body">
         <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, user_path(@user.id) %></h5>
@@ -16,31 +16,27 @@
     <div class="card-body">
        <% if user_signed_in? && @user.id == current_user.id %>
         <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
+       <% elsif @user.is_deleted == true %>
+       <h6>既に退会済みです</h6>
        <% else %>
         <td><%= render "public/relationships/btn", user: @user %></td>
        <% end %>
     </div>
     </div>
   <div class="col-md-9">
- <div class="card-body">
   <% @articles.each do |article| %>
-  <div class="card-header">
-    <table class="table" style="table-layout: fixed;">
-      <tr>
-        <td style="word-wrap: break-word;">
-          <%= image_tag @user.get_image(50, 50) %></br>
-          <%= link_to @user.name,user_path(@user.id) %></td>
-        <td><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td><%= render 'public/favorites/btn', article: article %></td>
-        <td>コメント数: <%= article.article_comments.count %></td>
-      </tr>
-    </table>
-  </div>
-  <div class="card-body" style="word-wrap: break-word;">
-    <blockquote class="blockquote mb-0">
-      <p><%= link_to article.title, article_path(article.id) %></p>
-    </blockquote>
-  </div>
+    <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
+          <div class="media">
+            <%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+            <div class="media-body">
+              <%= link_to @user.name,user_path(@user.id) %>
+              <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
+              <p class="mb-0 text-break"><%= link_to article.title, article_path(article.id) %></p>
+              <%= render 'public/favorites/btn', article: article %>
+              コメント数: <%= article.article_comments.count %>
+            </div>
+          </div>
+        </div>
   <% end %>
 </div>
 <%= paginate @articles %>

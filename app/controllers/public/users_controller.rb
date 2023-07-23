@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(current_user)
     else
-      render :edit, notice: '名前もしくはメールアドレスが既に使用されています'
+      render :edit
     end
   end
   
@@ -22,10 +22,10 @@ class Public::UsersController < ApplicationController
   end
   
   def withdrawal
-    @user = current_uder
-    @user.update(is_deleted: true)
-    reset_session
-    redirect_to root_path
+  @user = current_user
+  @user.update(is_deleted: true)
+  reset_session
+  redirect_to root_path
   end
 
   private

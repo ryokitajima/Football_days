@@ -19,14 +19,18 @@ Rails.application.routes.draw do
   
   scope module: :public do
     get '/search', to: 'searches#search'
-    get "/users/unsubscribe" => "users#unsubscribe"
-    patch "/users/withdrawal" => "users#withdrawal"
+    #get "/users/unsubscribe/:id" => "users#unsubscribe"
+    #patch "/users/withdrawal" => "users#withdrawal"
     resources :articles do
       resources :article_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
     resources :favorites, only: [:index]
     resources :users do
+      member do
+        get 'unsubscribe'
+        patch 'withdrawal'
+      end
       resource :relationships, only: [:create, :destroy]
       get '/followings' => 'relationships#followings', as: 'followings'
       get '/followers' => 'relationships#followers', as: 'followers'

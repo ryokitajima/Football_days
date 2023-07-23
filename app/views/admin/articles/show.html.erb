@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-md-3 text-center">
        <% if @user.image.attached? %>
-        <%= image_tag @user.get_image(200, 200)  %>
+        <%= image_tag @user.get_image(200, 200),class: "bd-placeholder-img mr-3 rounded-circle", width: "200", height: "200"%>
        <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
+        <%= image_tag 'no_image', size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
        <% end %>
       <div class="card-body text-center">
          <h5 class="card-title" style="word-wrap: break-word;"><%= link_to @user.name, admin_user_path(@user.id) %></h5>
@@ -22,10 +22,10 @@
     <div class="col-md-9">
       <div class="card-body text-center">
         <h4 class="card-title" style="word-wrap: break-word;"> <%= @article.title %></h4>
-        <%= link_to "削除", admin_article_path(@article.id), method: :delete, class: "btn btn-danger" %>
+        <%= link_to "削除", admin_article_path(@article.id), method: :delete,"data-confirm" => "本当に消しますか？", class:"btn btn-danger" %>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= image_tag @user.get_image(50, 50) %> <%= link_to @user.name,admin_user_path(@user.id) %> <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+        <li class="list-group-item"><%= image_tag @user.get_image(50, 50), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %> <%= link_to @user.name,admin_user_path(@user.id) %> <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></li>
       </ul>
       <div class="card">
       <div class="card-body" style="word-wrap: break-word;">

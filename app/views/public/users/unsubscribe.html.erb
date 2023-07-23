@@ -7,4 +7,4 @@
 <p>退会する場合は、「退会する」をクリックしてください。</p>
 
 <%= link_to "退会しない", user_path(current_user), class: "btn btn-primary btn-sm" %>
-<%= link_to "退会する" , users_withdrawal_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger btn-sm" %>
+<%= link_to "退会する" , withdrawal_user_path(current_user), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger btn-sm" %>

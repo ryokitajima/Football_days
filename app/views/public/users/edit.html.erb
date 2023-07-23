@@ -10,7 +10,7 @@
      <h6>メールアドレス</h6>
      <%= f.text_area :email %>
    <div>
-     <%= f.submit '編集内容を保存', class: "btn btn-success btn-sm text-center" %>  <%= link_to "退会する", users_unsubscribe_path(current_user), class: "btn btn-danger btn-sm" %>
+     <%= f.submit '編集内容を保存', class: "btn btn-success btn-sm text-center" %>  <%= link_to "退会する", unsubscribe_user_path(current_user), class: "btn btn-danger btn-sm" %>
    </div>
  <% end %>
  </div>

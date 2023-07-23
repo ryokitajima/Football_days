@@ -2,25 +2,21 @@
   <div class="row">
     <div class="col">
       <div class="card col">
-        <h4 class="text-center">投稿一覧</h4>
+        <h5 class="text-center">投稿一覧</h5>
           <% @articles.each do |article| %>
-        <div class="card-header">
-          <table>
-            <tr>
-              <td><%= image_tag article.user.get_image(50, 50) %></td>
-              <td style="word-wrap: break-word;"><%= link_to article.user.name, admin_user_path(article.user.id) %></td>
-              <td><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-              <td>お気に入り数：<%= article.favorites.count %></td>
-              <td>コメント数: <%= article.article_comments.count %></td>
-            </tr>
-          </table>
+        <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
+          <div class="media">
+            <%= image_tag article.user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+             <div class="media-body">
+                <%= link_to article.user.name, admin_user_path(article.user.id) %>
+                <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
+                <p class="mb-0 text-break"><%= link_to article.title, admin_article_path(article.id) %></p>
+                お気に入り数：<%= article.favorites.count %>
+                コメント数: <%= article.article_comments.count %>
+             </div>
+          </div>
         </div>
-        <div class="card-body col">
-          <blockquote class="blockquote mb-0">
-            <p style="word-wrap: break-word;"><%= link_to article.title, admin_article_path(article.id) %></p>
-          </blockquote>
-        </div>
-        <% end %>
+      <% end %>
       </div>
       <%= paginate @articles %>
     </div>
