@@ -3,26 +3,23 @@
     <div class="col-xs-1"></div>
     <div class="col-xs-9">
       <h2 class="p-3 mb-2 bg-light text-dark text-center">ログイン</h2>
-
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="text-center">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="text-center">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-
-        <div class="text-center">
-          <%= f.submit "ログイン", class: "btn btn-primary" %>
-        </div>
-        <% end %>
-        <div class="text-center">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="text-center">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+      <div class="text-center">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+      <div class="text-center">
         <p>会員登録がお済みでない方は</p>
         <%= link_to "新規会員登録", new_user_registration_path, class: "btn btn-success" %>
-        </div>
+      </div>
     </div>
   </div>
 </div>

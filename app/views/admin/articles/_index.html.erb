@@ -6,15 +6,15 @@
       <th>投稿日時</th>
     </tr>
   <tbody>
-    <% articles.each do |article| %>
-      <tr>
-        <td style="word-wrap: break-word;">
-          <%= image_tag article.user.get_image(50,50), class: "bd-placeholder-img mr-3 rounded-circle", width: "50", height: "50" %>
-          <%= link_to article.user.name, admin_user_path(article.user.id) %>
-        </td>
-        <td style="word-wrap: break-word;"><%= link_to article.title, admin_article_path(article.user.id) %></td>
-        <td><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-      </tr>
-    <% end %>
+  <% articles.each do |article| %>
+    <tr>
+      <td style="word-wrap: break-word;">
+        <%= image_tag article.user.get_image(50,50), class: "bd-placeholder-img mr-3 rounded-circle", width: "50", height: "50" %>
+        <%= link_to article.user.name, admin_user_path(article.user.id) %>
+      </td>
+      <td style="word-wrap: break-word;"><%= link_to article.title, admin_article_path(article.user.id) %></td>
+      <td><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>

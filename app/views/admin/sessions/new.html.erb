@@ -3,24 +3,19 @@
     <div class="col-xs-1"></div>
     <div class="col-xs-9">
       <h2 class="p-3 mb-2  text-center">管理者ログイン</h2>
-
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="text-center">
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="text-center">
+        <%= f.label :"メールアドレス" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+      <div class="text-center">
+        <%= f.label :"パスワード" %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="text-center">
-    <%= f.label :"パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="text-center">
-    <%= f.submit "ログイン", class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-</div>
-</div>
 </div>

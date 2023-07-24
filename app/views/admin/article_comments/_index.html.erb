@@ -1,16 +1,16 @@
 <% article.article_comments.order(created_at: :desc).each do |article_comment| %>
 <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
-          <div class="media">
-            <%= image_tag article_comment.user.get_image(50, 50), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
-            <div class="media-body">
-              <%= link_to article_comment.user.name, admin_user_path(article_comment.user)  %>
-              <%= article_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-              <p class="mb-0 text-break"><%=safe_join(article_comment.comment.split("\n"),tag(:br))%></p>
-              
-            </div>
-            <%= link_to "削除", admin_article_article_comment_path(article, article_comment), method: :delete,"data-confirm" => "本当に消しますか？", class:"btn btn-danger"%>
-          </div>
-        </div>
+  <div class="media">
+    <%= image_tag article_comment.user.get_image(50, 50), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+    <div class="media-body">
+      <%= link_to article_comment.user.name, admin_user_path(article_comment.user)  %>
+      <%= article_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+      <p class="mb-0 text-break"><%=safe_join(article_comment.comment.split("\n"),tag(:br))%></p>
+      
+    </div>
+    <%= link_to "削除", admin_article_article_comment_path(article, article_comment), method: :delete,"data-confirm" => "本当に消しますか？", class:"btn btn-danger"%>
+  </div>
+</div>
 <% end %>
 
  

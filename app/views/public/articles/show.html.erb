@@ -1,60 +1,57 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 text-center">
-       <% if @user.image.attached? %>
-        <%= image_tag @user.get_image(200, 200), class: "bd-placeholder-img mr-3 rounded-circle", width: "200", height: "200"  %>
-       <% else %>
-        <%= image_tag 'no_image', size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
-       <% end %>
+      <% if @user.image.attached? %>
+       <%= image_tag @user.get_image(200, 200), class: "bd-placeholder-img mr-3 rounded-circle", width: "200", height: "200"  %>
+      <% else %>
+       <%= image_tag 'no_image', size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
+      <% end %>
       <div class="card-body">
-        <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, user_path(@user.id) %></h5>
+       <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, user_path(@user.id) %></h5>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">フォロー<%= link_to @user.followings.count, user_followings_path(@user) %></li>
         <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
       </ul>
       <div class="card-body">
-         <% if user_signed_in? && @user.id == current_user.id %>
-          <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
-         <% elsif @user.is_deleted == true %>
+        <% if user_signed_in? && @user.id == current_user.id %>
+         <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
+        <% elsif @user.is_deleted == true %>
          <h6>既に退会済みです</h6>
-         <% else %>
-          <td><%= render "public/relationships/btn", user: @user %></td>
-         <% end %>
+        <% else %>
+         <td><%= render "public/relationships/btn", user: @user %></td>
+        <% end %>
       </div>
     </div>
     <div class="col-md-9">
       <div class="card-body text-center" style="word-wrap: break-word;">
         <h4 class="card-title" style="word-wrap: break-word;"><%=safe_join(@article.title.split("\n"),tag(:br))%></h4>
         <% if @article.user == current_user %>
-        <%= link_to "記事を編集する", edit_article_path(@article.id),class: "btn btn-success" %>
+         <%= link_to "記事を編集する", edit_article_path(@article.id),class: "btn btn-success" %>
         <% end %>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %> <%= link_to @user.name,user_path(@user.id) %> <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></li>
       </ul>
-  <div class="card">
-  <div class="card-body">
-    <%=safe_join(@article.body.split("\n"),tag(:br))%>
-  </div>
-  </div>
-  <div>
-    <table>
-      <tr>
-        <td><%= render 'public/favorites/btn', article: @article %></td>
-        <td>コメント数: <%= @article.article_comments.count %></td>
-      </tr>
-    </table>
-  </div>
-    <% if user_signed_in? %>
-    <%= render "public/article_comments/form", article: @article, article_comment: @article_comment %>
-    <% end %>
-    <%= render "public/article_comments/index", article: @article %>
+      <div class="card">
+        <div class="card-body">
+          <%=safe_join(@article.body.split("\n"),tag(:br))%>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <td><%= render 'public/favorites/btn', article: @article %></td>
+            <td>コメント数: <%= @article.article_comments.count %></td>
+          </tr>
+        </table>
+      </div>
+      <% if user_signed_in? %>
+      <%= render "public/article_comments/form", article: @article, article_comment: @article_comment %>
+      <% end %>
+      <%= render "public/article_comments/index", article: @article %>
     
-  </div>
     </div>
-    </div>
-
   </div>
 </div>
 

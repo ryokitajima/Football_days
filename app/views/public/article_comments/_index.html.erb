@@ -1,16 +1,15 @@
 <% article.article_comments.order(created_at: :desc).each do |article_comment| %>
 <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
-          <div class="media">
-            <%= image_tag article_comment.user.get_image(50, 50), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
-            <div class="media-body">
-              <%= link_to article_comment.user.name, user_path(article_comment.user.id) %>
-              <%= article_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-              <p class="mb-0 text-break"><%=safe_join(article_comment.comment.split("\n"),tag(:br))%></p>
-              
-            </div>
-            <% if article_comment.user == current_user %>
-            <%= link_to "削除", article_article_comment_path(article, article_comment), method: :delete, class: "btn btn-danger" %>
-            <% end %>
-          </div>
-        </div>
+  <div class="media">
+    <%= image_tag article_comment.user.get_image(50, 50), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+    <div class="media-body">
+      <%= link_to article_comment.user.name, user_path(article_comment.user.id) %>
+      <%= article_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+      <p class="mb-0 text-break"><%=safe_join(article_comment.comment.split("\n"),tag(:br))%></p>
+    </div>
+    <% if article_comment.user == current_user %>
+      <%= link_to "削除", article_article_comment_path(article, article_comment), method: :delete, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+</div>
 <% end %>

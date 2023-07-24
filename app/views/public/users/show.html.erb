@@ -9,37 +9,38 @@
       <div class="card-body">
         <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, user_path(@user.id) %></h5>
       </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">フォロー<%= link_to @user.followings.count, user_followings_path(@user) %></li>
-    <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
-  </ul>
-    <div class="card-body">
-       <% if user_signed_in? && @user.id == current_user.id %>
-        <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
-       <% elsif @user.is_deleted == true %>
-       <h6>既に退会済みです</h6>
-       <% else %>
-        <td><%= render "public/relationships/btn", user: @user %></td>
-       <% end %>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">フォロー<%= link_to @user.followings.count, user_followings_path(@user) %></li>
+        <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
+      </ul>
+      <div class="card-body">
+         <% if user_signed_in? && @user.id == current_user.id %>
+          <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
+         <% elsif @user.is_deleted == true %>
+         <h6>既に退会済みです</h6>
+         <% else %>
+          <td><%= render "public/relationships/btn", user: @user %></td>
+         <% end %>
+      </div>
     </div>
-    </div>
-  <div class="col-md-9">
-  <% @articles.each do |article| %>
-    <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
-          <div class="media">
-            <%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
-            <div class="media-body">
-              <%= link_to @user.name,user_path(@user.id) %>
-              <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
-              <p class="mb-0 text-break"><%= link_to article.title, article_path(article.id) %></p>
-              <%= render 'public/favorites/btn', article: article %>
-              コメント数: <%= article.article_comments.count %>
-            </div>
+    <div class="col-md-9">
+      <% @articles.each do |article| %>
+      <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
+        <div class="media">
+          <%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+          <div class="media-body">
+            <%= link_to @user.name,user_path(@user.id) %>
+            <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
+            <p class="mb-0 text-break"><%= link_to article.title, article_path(article.id) %></p>
+            <%= render 'public/favorites/btn', article: article %>
+            コメント数: <%= article.article_comments.count %>
           </div>
         </div>
-  <% end %>
-</div>
-<%= paginate @articles %>
+      </div>
+      <% end %>
+    </div>
+    <%= paginate @articles %>
+  </div>
 </div>
 
 

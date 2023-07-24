@@ -8,36 +8,37 @@
        <% end %>
       <div class="card-body text-center">
         <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, admin_user_path(@user.id) %></h5>
-         <h6 class="card-title"style="word-wrap: break-word;"><%=safe_join(@user.email.split("\n"),tag(:br))%></h6>
-          <% if @user.is_deleted == false %>
-            <h6>ステータス：有効</h6>
-          <% else %>
-            <h6>ステータス：退会</h6>
-          <% end %>
+        <h6 class="card-title"style="word-wrap: break-word;"><%=safe_join(@user.email.split("\n"),tag(:br))%></h6>
+        <% if @user.is_deleted == false %>
+          <h6>ステータス：有効</h6>
+        <% else %>
+          <h6>ステータス：退会</h6>
+        <% end %>
       </div>
       <div class="card-body">
           <%= link_to "プロフィールを編集する", edit_admin_user_path(@user.id), class: "btn btn-light" %>
       </div>
     </div>
-  <div class="col-md-9">
-   <div class="card-body">
-    <% @articles.each do |article| %>
-      <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
-        <div class="media">
-          <%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
-          <div class="media-body">
-            <%= link_to @user.name,admin_user_path(@user.id)  %>
-            <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
-            <p class="mb-0 text-break"><%= link_to article.title, admin_article_path(article.id) %></p>
-            お気に入り数：<%= article.favorites.count %>
-            コメント数: <%= article.article_comments.count %>
-          </div>
-        </div>
-      </div>
-  <% end %>
+    <div class="col-md-9">
+     <div class="card-body">
+       <% @articles.each do |article| %>
+       <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
+         <div class="media">
+           <%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+           <div class="media-body">
+             <%= link_to @user.name,admin_user_path(@user.id)  %>
+             <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
+             <p class="mb-0 text-break"><%= link_to article.title, admin_article_path(article.id) %></p>
+             お気に入り数：<%= article.favorites.count %>
+             コメント数: <%= article.article_comments.count %>
+           </div>
+         </div>
+       </div>
+       <% end %>
+     </div>
+    <%= paginate @articles %>
+    </div>
   </div>
-  <%= paginate @articles %>
- </div>
 </div>
 
 
