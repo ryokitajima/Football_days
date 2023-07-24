@@ -15,7 +15,7 @@
           <% if user.image.attached? %>
             <%= image_tag user.get_image(50, 50), class: "bd-placeholder-img mr-3 rounded-circle", width: "50", height: "50"  %>
           <% else %>
-            <%= image_tag 'no_image', size: '50x50', class: "bd-placeholder-img mr-3 rounded-circle" %>
+            <%= image_tag 'no_image.jpg', size: '50x50', class: "bd-placeholder-img mr-3 rounded-circle" %>
           <% end %>
         </td>
         <td style="word-wrap: break-word;"><%= link_to user.name, admin_user_path(user.id) %></td>

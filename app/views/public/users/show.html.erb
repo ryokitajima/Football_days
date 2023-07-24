@@ -4,7 +4,7 @@
        <% if @user.image.attached? %>
         <%= image_tag @user.get_image(200, 200), class: "bd-placeholder-img mr-3 rounded-circle", width: "200", height: "200" %>
        <% else %>
-        <%= image_tag 'no_image',size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
+        <%= image_tag 'no_image.jpg',size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
        <% end %>
       <div class="card-body">
         <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, user_path(@user.id) %></h5>
