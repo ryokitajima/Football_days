@@ -37,7 +37,7 @@
         </li>
         <li class="nav-item active" style="margin-right: 20px;">
           <%= link_to favorites_path, class:"nav-link active" do%>
-          <i class="fa-solid fa-heart"></i>いいねStock
+          <i class="fa-solid fa-heart"></i>お気に入り
           <% end %>
         </li>
         <li class="nav-item active" style="margin-right: 20px;">
@@ -77,6 +77,11 @@
         <li class="nav-item active" style="margin-right: 20px;">
           <%= link_to new_user_session_path, class:"nav-link active" do %>
           <i class="fa-solid fa-right-to-bracket"></i>ログイン
+          <% end %>
+        </li>
+        <li class="nav-item active" style="margin-right: 20px;">
+          <%= link_to users_guest_sign_in_path, class: "nav-link active sign_in", method: :post do %>
+          <i class="fa-sharp fa-solid fa-door-open"></i>ゲストログイン（閲覧用）
           <% end %>
         </li>
         <% end %>

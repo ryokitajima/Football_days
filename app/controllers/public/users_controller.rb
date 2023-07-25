@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :unsubscribe, :withdrawal]
+  before_action :ensure_guest_user, only: [:edit]#before_actionでeditアクション実行前に処理を行う
   def show
     @user = User.find(params[:id])  
     @articles = @user.articles.order(created_at: :desc).page(params[:page]).per(10)
@@ -38,4 +39,10 @@ class Public::UsersController < ApplicationController
       redirect_to root_path
     end
   end
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end  
 end

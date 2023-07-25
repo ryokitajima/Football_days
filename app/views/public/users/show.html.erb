@@ -14,7 +14,7 @@
         <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
       </ul>
       <div class="card-body">
-         <% if user_signed_in? && @user.id == current_user.id %>
+         <% if user_signed_in? && @user.id == current_user.id && @user.name != "guestuser" %>
           <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
          <% elsif @user.is_deleted == true %>
          <h6>既に退会済みです</h6>
