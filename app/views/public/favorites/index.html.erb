@@ -1,21 +1,23 @@
+<div class="text-muted"><h5 class="text-center"><i class="fa-solid fa-heart"></i>お気に入り記事一覧</h5></div>
 <div class="container">
   <div class="row">
     <div class="col">
       <div class="card col">
-        <h5 class="text-center">お気に入り記事一覧</h5>
          <% if @favorite_articles.empty? %>
           <p>お気に入りした記事はありません。</p>
          <% else %>
           <% @favorite_articles.each do |favorite_article| %>
           <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
             <div class="media">
+              <%= link_to user_path(favorite_article.user.id) do %>
               <%= image_tag favorite_article.user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+              <% end %>
               <div class="media-body">
-                <%= link_to favorite_article.user.name,user_path(favorite_article.user.id) %>
-                <%= favorite_article.created_at.strftime('%Y/%m/%d %H:%M') %>
-                <p class="mb-0 text-break"><%= link_to favorite_article.title, article_path(favorite_article.id) %></p>
+                <%= link_to favorite_article.user.name,user_path(favorite_article.user.id), style: "color: black;" %>
+                <span style="color: gray;"><%= favorite_article.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+                <h5 class="mb-0 text-break"><%= link_to favorite_article.title, article_path(favorite_article.id), style: "color: black;" %></h5>
                 <%= render 'public/favorites/btn', article: favorite_article %>
-                コメント数: <%= favorite_article.article_comments.count %>
+                <i class="fa-sharp fa-solid fa-comments" style="color: rgb(177, 224, 184);"></i><span style="color: rgb(177, 224, 184);"><%= favorite_article.article_comments.count %></span>
               </div>
             </div>
           </div>

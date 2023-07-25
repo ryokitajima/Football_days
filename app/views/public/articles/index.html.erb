@@ -1,18 +1,20 @@
+<div class="text-muted"><h5 class="text-center"><i class="fa-solid fa-list"></i>投稿一覧</h5></div>
 <div class="container">
   <div class="row">
     <div class="col">
       <div class="card col">
-        <h5 class="text-center">投稿一覧</h5>
         <% @articles.each do |article| %>
         <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
           <div class="media">
+            <%= link_to user_path(article.user.id) do %>
             <%= image_tag article.user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+            <% end %>
             <div class="media-body">
-              <%= link_to article.user.name, user_path(article.user.id) %>
-              <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
-              <p class="mb-0 text-break"><%= link_to article.title, article_path(article.id) %></p>
+              <%= link_to article.user.name, user_path(article.user.id), style: "color: black;" %>
+              <span style="color: gray;"><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+              <h5 class="mb-0 text-break"><%= link_to article.title, article_path(article.id), style: "color: black;" %></h5>
               <%= render 'public/favorites/btn', article: article %>
-              コメント数: <%= article.article_comments.count %>
+              <i class="fa-sharp fa-solid fa-comments" style="color: rgb(177, 224, 184);"></i><span style="color: rgb(177, 224, 184);"><%= article.article_comments.count %></span>
             </div>
           </div>
         </div>

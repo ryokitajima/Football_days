@@ -1,10 +1,10 @@
 <% if current_user && article.present? && article.favorited_by?(current_user) %>
-  <%= link_to article_favorites_path(article), method: :delete,  style: "color: red;" do %>
+  <%= link_to article_favorites_path(article), method: :delete,  style: "color: rgb(243, 196, 245);" do %>
     <i class="fas fa-heart" aria-hidden="true"></i>
     <%= article.favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to article_favorites_path(article), method: :post do %>
+  <%= link_to article_favorites_path(article), method: :post, style: "color: rgba(128, 128, 128, 0.7);" do %>
     <i class="fas fa-heart" aria-hidden="true"></i>
     <%= article.favorites.count %>
   <% end %>
