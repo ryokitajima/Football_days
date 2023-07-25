@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 text-center">
-       <% if @user.image.present? && @user.image.attached? %>
+       <% if @user && @user.image.attached? %>
         <%= image_tag @user.get_image(200, 200), class: "bd-placeholder-img mr-3 rounded-circle", width: "200", height: "200" %>
        <% else %>
         <%= image_tag 'no_image.jpg',size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
@@ -16,10 +16,6 @@
       <div class="card-body">
          <% if user_signed_in? && @user.id == current_user.id %>
           <%= link_to "プロフィールを編集する", edit_user_path(current_user.id), class: "btn btn-light" %>
-         <% elsif @user.is_deleted == true %>
-         <h6>既に退会済みです</h6>
-         <% else %>
-          <td><%= render "public/relationships/btn", user: @user %></td>
          <% end %>
       </div>
     </div>
@@ -28,9 +24,9 @@
       <% @articles.each do |article| %>
       <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
         <div class="media">
-          <%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+          <%= image_tag article.user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
           <div class="media-body">
-            <%= link_to @user.name,user_path(@user.id) %>
+            <%= link_to article.user.name,user_path(article.user.id) %>
             <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
             <p class="mb-0 text-break"><%= link_to article.title, article_path(article.id) %></p>
             <%= render 'public/favorites/btn', article: article %>

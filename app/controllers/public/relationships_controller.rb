@@ -20,6 +20,15 @@ class Public::RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
 		@users = @user.followers
   end
+  
+  def timeline
+    @user = current_user
+    # フォローしているユーザーのIDを取得
+    followed_user_ids = @user.followings.pluck(:id)
+    # フォローしているユーザーと自分自身の投稿を取得して結合し、作成日時で降順に並べる
+    @articles = Article.where(user_id: followed_user_ids + [@user.id]).order(created_at: :desc).page(params[:page]).per(10)
+  end
+
 end
 
   
