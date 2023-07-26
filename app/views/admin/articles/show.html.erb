@@ -7,7 +7,7 @@
         <%= image_tag 'no_image.jpg', size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
        <% end %>
       <div class="card-body text-center">
-         <h5 class="card-title" style="word-wrap: break-word;"><%= link_to @user.name, admin_user_path(@user.id) %></h5>
+         <h5 class="card-title" style="word-wrap: break-word;"><%= link_to @user.name, admin_user_path(@user.id), style: "color: black;" %></h5>
          <h6 class="card-title" style="word-wrap: break-word;"><%=safe_join(@user.email.split("\n"),tag(:br))%></h6>
           <% if @user.is_deleted == false %>
             <h6>ステータス：有効</h6>
@@ -25,7 +25,13 @@
         <%= link_to "削除", admin_article_path(@article.id), method: :delete,"data-confirm" => "本当に消しますか？", class:"btn btn-danger" %>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= image_tag @user.get_image(50, 50), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %> <%= link_to @user.name,admin_user_path(@user.id) %> <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+        <li class="list-group-item">
+          <%= link_to admin_user_path(@user.id) do %> 
+          <%= image_tag @user.get_image(50, 50), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %> 
+          <% end %>
+          <%= link_to @user.name,admin_user_path(@user.id), style: "color: black;" %> 
+          <span style="color: gray;"><%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+        </li>
       </ul>
       <div class="card">
       <div class="card-body" style="word-wrap: break-word;">
@@ -35,8 +41,8 @@
       <div>
         <table>
           <tr>
-            <td>お気に入り数:<%= @article.favorites.count %></td>
-            <td>コメント数: <%= @article.article_comments.count %></td>
+            <td><span style="color: gray;">お気に入り数:<%= @article.favorites.count %></span></td>
+            <td><span style="color: gray;">コメント数: <%= @article.article_comments.count %></span></td>
           </tr>
         </table>
       </div>

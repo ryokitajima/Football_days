@@ -1,18 +1,20 @@
 <table class='table'style="table-layout: fixed;">
   <thead>
     <tr>
-      <th>user</th>
-      <th>タイトル</th>
-      <th>投稿日時</th>
+      <th><span style="color: gray;">user</span></th>
+      <th><span style="color: gray;">タイトル</span></th>
+      <th><span style="color: gray;">投稿日時</span></th>
     </tr>
   <tbody>
   <% articles.each do |article| %>
     <tr>
       <td style="word-wrap: break-word;">
+        <%= link_to admin_user_path(article.user.id) do %>
         <%= image_tag article.user.get_image(50,50), class: "bd-placeholder-img mr-3 rounded-circle", width: "50", height: "50" %>
-        <%= link_to article.user.name, admin_user_path(article.user.id) %>
+        <% end %>
+        <%= link_to article.user.name, admin_user_path(article.user.id), style: "color: black;" %>
       </td>
-      <td style="word-wrap: break-word;"><%= link_to article.title, admin_article_path(article.id) %></td>
+      <td style="word-wrap: break-word;"><%= link_to article.title, admin_article_path(article.id), style: "color: black;" %></td>
       <td><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></td>
     </tr>
   <% end %>

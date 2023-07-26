@@ -1,18 +1,20 @@
+<h5 class="text-center">投稿一覧</h5>
 <div class="container">
   <div class="row">
     <div class="col">
       <div class="card col">
-        <h5 class="text-center">投稿一覧</h5>
           <% @articles.each do |article| %>
         <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
           <div class="media">
+            <%= link_to admin_user_path(article.user.id) do %>
             <%= image_tag article.user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+            <% end %>
              <div class="media-body">
-                <%= link_to article.user.name, admin_user_path(article.user.id) %>
-                <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
-                <p class="mb-0 text-break"><%= link_to article.title, admin_article_path(article.id) %></p>
-                お気に入り数：<%= article.favorites.count %>
-                コメント数: <%= article.article_comments.count %>
+                <%= link_to article.user.name, admin_user_path(article.user.id), style: "color: black;" %>
+                <span style="color: gray;"><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+                <p class="mb-0 text-break"><%= link_to article.title, admin_article_path(article.id), style: "color: black;" %></p>
+                <span style="color: gray;">お気に入り数：<%= article.favorites.count %></span>
+                <span style="color: gray;">コメント数: <%= article.article_comments.count %></span>
              </div>
           </div>
         </div>

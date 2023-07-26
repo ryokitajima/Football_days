@@ -1,26 +1,29 @@
 <table class='table'style="table-layout: fixed;">
   <thead>
     <tr>
-      <th>image</th>
-      <th>name</th>
-      <th>フォロー数</th>
-      <th>フォロワー数</th>
+      <th><span style="color: gray;">user</span></th>
+      <th><span style="color: gray;">フォロー数</span></th>
+      <th><span style="color: gray;">フォロワー数</span></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td>
+        <td style="word-wrap: break-word;">
           <% if user.image.attached? %>
+            <%= link_to user_path(user.id) do %>
             <%= image_tag user.get_image(50, 50), class: "bd-placeholder-img mr-3 rounded-circle", width: "50", height: "50" %>
+            <% end %>
           <% else %>
+            <%= link_to user_path(user.id) do %>
             <%= image_tag 'no_image.jpg', size: '50x50', class: "bd-placeholder-img mr-3 rounded-circle" %>
+            <% end %>
           <% end %>
+          <%= link_to user.name, user_path(user.id), style: "color: black;" %>
         </td>
-        <td style="word-wrap: break-word;"><%= link_to user.name, user_path(user.id) %></td>
-        <td><%= link_to user.followings.count, user_followings_path( user.id) %></td>
-        <td><%= link_to user.followers.count, user_followers_path( user.id) %></td>
+        <td><%= link_to user.followings.count, user_followings_path( user.id), style: "color: black;" %></td>
+        <td><%= link_to user.followers.count, user_followers_path( user.id), style: "color: black;" %></td>
         <td>
           <% if user_signed_in? && current_user != user %>
             <% if current_user.following?(user) %>

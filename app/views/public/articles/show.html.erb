@@ -7,11 +7,11 @@
        <%= image_tag 'no_image.jpg', size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
       <% end %>
       <div class="card-body">
-       <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, user_path(@user.id) %></h5>
+       <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, user_path(@user.id), style: "color: black;" %></h5>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">フォロー<%= link_to @user.followings.count, user_followings_path(@user) %></li>
-        <li class="list-group-item">フォロワー<%= link_to @user.followers.count, user_followers_path(@user) %></li>
+        <li class="list-group-item"style="color: gray;">フォロー  <%= link_to @user.followings.count, user_followings_path(@user), style: "color: black;" %></li>
+        <li class="list-group-item"style="color: gray;">フォロワー  <%= link_to @user.followers.count, user_followers_path(@user) , style: "color: black;"%></li>
       </ul>
       <div class="card-body">
         <% if user_signed_in? && @user.id == current_user.id && @user.name != "guestuser" %>
@@ -31,7 +31,13 @@
         <% end %>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %> <%= link_to @user.name,user_path(@user.id) %> <%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+        <li class="list-group-item">
+          <%= link_to user_path(@user.id) do %> 
+          <%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %> 
+          <% end %>
+          <%= link_to @user.name, user_path(@user.id), style: "color: black;" %> 
+          <span style="color: gray;"><%= @article.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+        </li>
       </ul>
       <div class="card">
         <div class="card-body">
@@ -42,7 +48,7 @@
         <table>
           <tr>
             <td><%= render 'public/favorites/btn', article: @article %></td>
-            <td>コメント数: <%= @article.article_comments.count %></td>
+            <td><i class="fa-sharp fa-solid fa-comments" style="color: rgb(177, 224, 184);"></i><span style="color: rgb(177, 224, 184);"><%= @article.article_comments.count %></span></td>
           </tr>
         </table>
       </div>

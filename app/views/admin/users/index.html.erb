@@ -1,20 +1,25 @@
+<h5 class="text-center">ユーザー一覧</h5>
 <div class="container">
   <div class="row">
     <div class="col">
       <div class="card col">
-        <h4 class="text-center">ユーザ一覧</h4>
         <table class="table" style="table-layout: fixed;">
-          <% @users.each do |user| %>
           <thead>
-            <th class="active col-xs-4">ユーザID</th>
-            <th class="active col-xs-4">ユーザ名</th>
-            <th class="active col-xs-4">メールアドレス</th>
-            <th class="active col-xs-4">ステータス</th>
+            <th class="active col-xs-4"><span style="color: gray;">ユーザーID</span></th>
+            <th class="active col-xs-4"><span style="color: gray;">ユーザー</span></th>
+            <th class="active col-xs-4"><span style="color: gray;">メールアドレス</span></th>
+            <th class="active col-xs-4"><span style="color: gray;">ステータス</span></th>
           </thead>
           <tbody>
+            <% @users.each do |user| %>
             <tr>
               <td><%= user.id %></td>
-              <td style="word-wrap: break-word;"><%= link_to user.name, admin_user_path(user.id) %></td>
+              <td style="word-wrap: break-word;">
+                <%= link_to admin_user_path(user.id) do %>
+                <%= image_tag user.get_image(50,50), class: "bd-placeholder-img mr-3 rounded-circle", width: "50", height: "50" %>
+                <% end %>
+                <%= link_to user.name, admin_user_path(user.id), style: "color: black;" %>
+              </td>
               <td style="word-wrap: break-word;"><%= user.email %></td>
                 <% if user.is_deleted == false %>
                   <td>有効</td>
@@ -22,8 +27,8 @@
                   <td>退会</td>
                 <% end %>
             </tr>
+            <% end %>
           </tbody>
-           <% end %>
         </table>
       </div>
       <%= paginate @users %>

@@ -7,7 +7,7 @@
         <%= image_tag 'no_image.jpg', size: "200x200", class: "bd-placeholder-img mr-3 rounded-circle" %>
        <% end %>
       <div class="card-body text-center">
-        <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, admin_user_path(@user.id) %></h5>
+        <h5 class="card-title"style="word-wrap: break-word;"><%= link_to @user.name, admin_user_path(@user.id), style: "color: black;" %></h5>
         <h6 class="card-title"style="word-wrap: break-word;"><%=safe_join(@user.email.split("\n"),tag(:br))%></h6>
         <% if @user.is_deleted == false %>
           <h6>ステータス：有効</h6>
@@ -24,13 +24,15 @@
        <% @articles.each do |article| %>
        <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
          <div class="media">
+           <%= link_to admin_user_path(@user.id)  do %>
            <%= image_tag @user.get_image(64, 64), class: "bd-placeholder-img mr-3 rounded-circle", width: "64", height: "64" %>
+           <% end %>
            <div class="media-body">
-             <%= link_to @user.name,admin_user_path(@user.id)  %>
-             <%= article.created_at.strftime('%Y/%m/%d %H:%M') %>
-             <p class="mb-0 text-break"><%= link_to article.title, admin_article_path(article.id) %></p>
-             お気に入り数：<%= article.favorites.count %>
-             コメント数: <%= article.article_comments.count %>
+             <%= link_to @user.name,admin_user_path(@user.id), style: "color: black;" %>
+             <span style="color: gray;"><%= article.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+             <p class="mb-0 text-break"><%= link_to article.title, admin_article_path(article.id), style: "color: black;" %></p>
+             <span style="color: gray;">お気に入り数：<%= article.favorites.count %></span>
+             <span style="color: gray;">コメント数: <%= article.article_comments.count %></span>
            </div>
          </div>
        </div>
