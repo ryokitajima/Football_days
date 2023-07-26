@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-9">
-       <h4 class="p-3 mb-2 text-center ">会員情報編集</h4>
+    <div class="col text-center">
+      <h4 class="p-3 mb-2 text-center ">会員情報編集</h4>
        <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
        <h6>Image</h6>
        <%= f.file_field :image, placeholder: "Image", accept: "image/*" %> 
