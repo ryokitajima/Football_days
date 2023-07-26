@@ -10,8 +10,8 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+  <header>
    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(135, 148, 196, 0.15);">
     <a class="navbar-brand text-success" href="/">Football days</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,6 +98,14 @@
       </div>
     </div>
    </nav>
-    <%= yield %>
+  </header>
+  <main class="min-vh-100">
+     <%= yield %>
+  </main>
+   <footer class="bg-light py-1">
+      <div class="container text-center">
+        <%= link_to "Football days", root_path, style: "color: green;" %></p>
+      </div>
+   </footer>
   </body>
 </html>

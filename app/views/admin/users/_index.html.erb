@@ -2,8 +2,8 @@
   <thead>
     <tr>
       <th><span style="color: gray;">user</span></th>
-      <th><span style="color: gray;">フォロー数</span></th>
-      <th><span style="color: gray;">フォロワー数</span></th>
+      <th><span style="color: gray;">メールアドレス</span></th>
+      <th><span style="color: gray;">ステータス</span></th>
     </tr>
   </thead>
   <tbody>
@@ -21,8 +21,12 @@
           <% end %>
           <%= link_to user.name, admin_user_path(user.id), style: "color: black;" %>
         </td>
-        <td><%= link_to user.followings.count, admin_user_followings_path(user.id), style: "color: black;" %></td>
-        <td><%= link_to user.followers.count, admin_user_followers_path(user.id), style: "color: black;" %></td>
+        <td style="word-wrap: break-word;"><%= user.email %></td>
+          <% if user.is_deleted == false %>
+            <td>有効</td>
+          <% else %>
+            <td>退会</td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
