@@ -24,6 +24,13 @@
 - ただしユーザーの画像は投稿可能にし、試合の画像や映像は投稿機能として準備しない
 
 ## 設計書
+- user側画面遷移図 https://drive.google.com/file/d/1uG-Zpt5HszzwLi5ZMGy8FfG3PGkFBp18/view?usp=sharing
+- admin側画面遷移図 https://drive.google.com/file/d/1gAnHNbelquQz-yDm9Iw9WGsmNe5FkbdA/view?usp=sharing
+- user側ワイヤーフレーム https://drive.google.com/file/d/18n5H4xl1QG_-ESBe2WknniKRd9F3nRP0/view?usp=sharing
+- admin側ワイヤーフレーム https://drive.google.com/file/d/1y2LVO3sXIy2dJ6n7PuCVzwxQxadHVXie/view?usp=sharing
+- テーブル定義書 https://docs.google.com/spreadsheets/d/1F8Ew_wo5Qba51cIKfaSTWNm12QVIlS0-Ckxe1uckwOU/edit?usp=sharing
+- ER図 https://drive.google.com/file/d/1Sza_wTkbE5K9NQvw04Ao9W-ejPR5PbX5/view?usp=sharing
+- 詳細設計書 https://docs.google.com/spreadsheets/d/1G4L-KOQr_CMiLJFa3F4rnHGFH-ycc_UaCCSEWqnc7MQ/edit?usp=sharing
 
 
 ## 開発環境
