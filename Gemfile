@@ -55,12 +55,16 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#ログイン機能
 gem 'devise'
 
+#画像リサイズ用
 gem 'image_processing', '~> 1.2'
 
+#ページネーション機能
 gem 'kaminari','~> 1.2.1'
 
+#デプロイ準備
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

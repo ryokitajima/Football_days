@@ -23,8 +23,6 @@ Rails.application.routes.draw do
   
   scope module: :public do
     get '/search', to: 'searches#search'
-    #get "/users/unsubscribe/:id" => "users#unsubscribe"
-    #patch "/users/withdrawal" => "users#withdrawal"
     resources :articles do
       resources :article_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
