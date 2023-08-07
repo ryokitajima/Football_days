@@ -8,7 +8,6 @@
       <%= link_to article_comment.user.name, admin_user_path(article_comment.user), style: "color: black;" %>
       <span style="color: gray;"><%= article_comment.created_at.strftime('%Y/%m/%d %H:%M') %></span>
       <p class="mb-0 text-break"><%=safe_join(article_comment.comment.split("\n"),tag(:br))%></p>
-      
     </div>
     <%= link_to "削除", admin_article_article_comment_path(article, article_comment), method: :delete,"data-confirm" => "本当に消しますか？", class:"btn btn-danger"%>
   </div>
