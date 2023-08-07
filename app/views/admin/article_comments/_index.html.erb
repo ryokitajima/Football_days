@@ -1,3 +1,4 @@
+<%# この部分は、特定の記事に関連するコメントを新しい順に表示する %>
 <% article.article_comments.order(created_at: :desc).each do |article_comment| %>
 <div class="card-body" style="border-bottom: 1px solid #dee2e6;">
   <div class="media">
