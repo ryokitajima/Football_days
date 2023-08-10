@@ -8,7 +8,7 @@ class Article < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
   
-  # タイトルに指定された内容を含む記事を検索します。
+  # タイトルに指定された内容を含む記事を検索
   # content: 検索する内容
   # method: 検索方法 
   def self.search_for(content, method)
