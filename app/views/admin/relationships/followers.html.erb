@@ -3,6 +3,7 @@
     <div class="col">
       <div class="card col">
         <h2 class="text-center">Follower Users</h2>
+        <%# ユーザーが存在するかを確認 %>
         <% if @users.exists? %>
           <%= render 'admin/users/index', users: @users %>
         <% else %>
