@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 text-center">
+       <%#ユーザーの画像取得%>
        <% if @user.image.attached? %>
         <%= image_tag @user.get_image(200, 200),class: "bd-placeholder-img mr-3 rounded-circle", width: "200", height: "200"%>
        <% else %>
@@ -8,6 +9,7 @@
        <% end %>
       <div class="card-body text-center">
          <h5 class="card-title" style="word-wrap: break-word;"><%= link_to @user.name, admin_user_path(@user.id), style: "color: black;" %></h5>
+         <%# メールアドレスが長い場合、<br>タグで改行 %>
          <h6 class="card-title" style="word-wrap: break-word;"><%=safe_join(@user.email.split("\n"),tag(:br))%></h6>
           <% if @user.is_deleted == false %>
             <h6>ステータス：有効</h6>
@@ -35,7 +37,8 @@
       </ul>
       <div class="card">
       <div class="card-body" style="word-wrap: break-word;">
-        <%=safe_join(@article.body.split("\n"),tag(:br))%>
+        <%# 記事本文を掲載。<br>タグで改行を反映%>
+        <%= safe_join(@article.body.split("\n"),tag(:br))%>
       </div>
       </div>
       <div>
