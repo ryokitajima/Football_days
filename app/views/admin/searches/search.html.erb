@@ -2,9 +2,11 @@
   <div class="row">
     <div class="col">
       <div class="card col">
+          <%# 選択がユーザーの場合%>
           <% if @model == 'user' %>
           	<h3 class="text-center">Users検索結果 "<%= @content %>"</h3>
             <%= render 'admin/users/index', users: @records %>
+          <%# 選択が投稿記事タイトルの場合
           <% elsif @model == 'article' %>
           	<h3 class="text-center">投稿記事タイトル検索結果 "<%= @content %>"</h3>
             <%= render 'admin/articles/index', articles: @records %>
