@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <% if @article.errors.any? %>
+        <%= @article.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <%= form_with model: @article do |f| %>
       <div class="mb-3 col">
         <label for="exampleFormControlInput1" class="form-label">タイトル</label>

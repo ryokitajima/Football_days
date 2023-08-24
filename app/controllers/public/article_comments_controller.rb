@@ -10,9 +10,12 @@ class Public::ArticleCommentsController < ApplicationController
     # コメントに記事IDを紐づける
     @comment.article_id = @article.id
     # コメントを保存
-    @comment.save
-    # 元のページにリダイレクト
-    redirect_to request.referer
+    if @comment.save
+      # 元のページにリダイレクト
+      redirect_to request.referer
+    else
+      redirect_to request.referer
+    end
   end
   
   # 記事に対するコメントを削除するアクション
