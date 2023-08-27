@@ -4,26 +4,29 @@
       <h4 class="p-3 mb-2 text-center ">会員情報編集</h4>
        <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
        <h6>Image</h6>
-       <%= f.file_field :image, placeholder: "Image", accept: "image/*" %> 
+       <%= f.file_field :image, placeholder: "Image", accept: "image/*" %>
        <h6>ニックネーム</h6>
        <%= f.text_field :name %>
        <h6>メールアドレス</h6>
        <%= f.text_area :email %>
-       <table>
-         <tr>
-          <th>会員ステータス</th>
-          <td><%= f.radio_button :is_deleted, false %></td>
-          <td><%= f.label :is_deleted, "有効" %></td>
-          <td><%= f.radio_button :is_deleted, true %></td>
-          <td><%= f.label :is_deleted, "退会" %></td>
-         </tr>
-       </table>
-        <div>
-         <%= f.submit '編集内容を保存', class: "btn btn-success btn-sm text-center" %> 
+      <div class="text-center">
+        <div class="d-inline-block">
+         <table>
+           <tr>
+            <th>会員ステータス</th>
+            <td><%= f.radio_button :is_deleted, false %></td>
+            <td><%= f.label :is_deleted, "有効", value: false %></td>
+            <td><%= f.radio_button :is_deleted, true %></td>
+            <td><%= f.label :is_deleted, "退会", value: true %></td>
+           </tr>
+         </table>
         </div>
+      </div>
+      <div>
+       <%= f.submit '編集内容を保存', class: "btn btn-success btn-sm text-center" %>
+      </div>
      <% end %>
     </div>
   </div>
 </div>
- 
- 
+
